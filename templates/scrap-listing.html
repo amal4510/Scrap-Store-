@@ -1,0 +1,17 @@
+<div class="container mt-5">
+    <div class="row">
+        {% for scrap in scraps %}
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <img src="{{ scrap.image_url }}" class="card-img-top" alt="Scrap Image">
+                <div class="card-body">
+                    <h5 class="card-title">{{ scrap.title }}</h5>
+                    <p class="card-text">{{ scrap.description }}</p>
+                    <p class="card-text"><strong>Price:</strong> ${{ scrap.price }}</p>
+                    <a href="#" class="btn btn-primary">Buy Now</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>

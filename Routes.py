@@ -1,5 +1,5 @@
 from flask import render_template, redirect, url_for, request, flash,session
-from Model import User
+from Model import User,Scrap
 from database import db
 from werkzeug.security import generate_password_hash, check_password_hash
 
@@ -63,3 +63,26 @@ def register_routes(app):
             return redirect(url_for('login'))
 
         return render_template('register.html')
+    
+    
+    @app.route('/add_scrap', methods=['GET','POST'])
+    def add_scrap():
+        if request.method == 'POST':            
+            title = request.form['title']
+            description = request.form['description']
+            price = request.form['price']
+            image_url = request.form['image_url']
+            
+            new_scrap = Scrap(title=title, description=description, price=price, image_url=image_url)
+            
+            db.session.add(new_scrap)
+            db.session.commit()
+        
+            return redirect('/scrap-listings')
+        return render_template('add-scrap.html')
+
+
+    @app.route('/scrap-listings')
+    def scrap_listings():
+        scraps = Scrap.query.all()  # Fetch all scraps from the database
+        return render_template('scrap-listing.html', scraps=scraps)
