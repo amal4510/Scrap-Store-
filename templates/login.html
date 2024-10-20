@@ -14,38 +14,47 @@
         <div class="row w-100 bg-white rounded-3 shadow">
             <!-- Image Section -->
             <div class="col-md-6 d-none d-md-flex align-items-center justify-content-center">
-                <img src="{{url_for('static', filename='bg.png')}}" class="img-fluid" alt="Background Image">
+                <img src="{{url_for('static', filename='img/bg.png')}}" class="img-fluid" alt="Background Image">
             </div>
             <!-- Form Section -->
             <div class="col-md-6 p-4">
                 <div id="loginForm">
                     <h2 class="text-center mb-4">Login</h2>
-                    <form action="#" method="post">
+                    <form action="/login" method="post">
                         <div class="mb-3">
-                            <input type="text" class="form-control" placeholder="Username" required>
+                            <input type="text" name="username" class="form-control" placeholder="Username" required>
                         </div>
                         <div class="mb-3">
-                            <input type="password" class="form-control" placeholder="Password" required>
+                            <input type="password" name="password" class="form-control" placeholder="Password" required>
                         </div>
                         <button type="submit" class="btn btn-primary w-100">Login</button>
                     </form>
                     <p class="text-center mt-3">Don't have an account? <a href="#" id="showRegister">Register</a></p>
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                      <ul>
+                        {% for category, message in messages %}
+                          <li class="{{ category }}">{{ message }}</li>
+                        {% endfor %}
+                      </ul>
+                    {% endif %}
+                  {% endwith %}
                 </div>
 
                 <div id="registerForm" class="d-none">
                     <h2 class="text-center mb-4">Register</h2>
-                    <form action="#" method="post">
+                    <form action="/register" method="post">
                         <div class="mb-3">
-                            <input type="text" class="form-control" placeholder="Username" required>
+                            <input type="text" name="username" class="form-control" placeholder="Username" required>
                         </div>
                         <div class="mb-3">
-                            <input type="email" class="form-control" placeholder="Email" required>
+                            <input type="email" name="email" class="form-control" placeholder="Email" required>
                         </div>
                         <div class="mb-3">
-                            <input type="password" class="form-control" placeholder="Password" required>
+                            <input type="password" name="password" class="form-control" placeholder="Password" required>
                         </div>
                         <div class="mb-3">
-                            <input type="password" class="form-control" placeholder="Confirm Password" required>
+                            <input type="password" name="confirm_password" class="form-control" placeholder="Confirm Password" required>
                         </div>
                         <button type="submit" class="btn btn-primary w-100">Register</button>
                     </form>

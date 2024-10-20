@@ -64,6 +64,13 @@ nav {
     padding: 8px 0px !important;
 }
 
+.dash{
+    margin-top: 10px;
+    border-radius: 10px;
+    height:30px;
+    width:80px;
+
+}
 .cont-sec {
     padding: 8px;
     background-color: #a7c957;
