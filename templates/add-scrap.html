@@ -6,8 +6,9 @@
     <title>Submit Scrap Information</title>
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
 </head>
-<body>
+<body style="background-color: #6a994e;">
 
 <div class="container mt-5">
     <h2 class="mb-4">Submit Your Scrap Information</h2>
@@ -26,7 +27,7 @@
 
         <!-- Scrap Price -->
         <div class="mb-3">
-            <label for="price" class="form-label">Price (USD)</label>
+            <label for="price" class="form-label">Price (IND)</label>
             <input type="number" step="0.01" class="form-control" id="price" name="price" placeholder="Enter the scrap price" required>
         </div>
         
