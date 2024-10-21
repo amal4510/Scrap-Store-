@@ -2,9 +2,10 @@ from flask import render_template, redirect, url_for, request, flash,session
 from Model import User,Scrap
 from database import db
 from werkzeug.security import generate_password_hash, check_password_hash
+from werkzeug.utils import secure_filename
+import os
 
 def register_routes(app):
-
     @app.route('/')
     def index():
         if 'username' in session:
@@ -64,22 +65,57 @@ def register_routes(app):
 
         return render_template('register.html')
     
-    
-    @app.route('/add_scrap', methods=['GET','POST'])
+    # Scraping processs
+    UPLOAD_FOLDER = 'static/uploads'
+    ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
+
+    def allowed_file(filename):
+        return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+    app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+    @app.route('/add_scrap', methods=['GET', 'POST'])
     def add_scrap():
-        if request.method == 'POST':            
+
+        if 'username' not in session:
+            flash('Please log in to add scrap', 'danger')
+            return redirect(url_for('login'))
+        print(session['id'])
+        if request.method == 'POST':
             title = request.form['title']
             description = request.form['description']
             price = request.form['price']
-            image_url = request.form['image_url']
-            
-            new_scrap = Scrap(title=title, description=description, price=price, image_url=image_url)
-            
-            db.session.add(new_scrap)
-            db.session.commit()
-        
-            return redirect('/scrap-listings')
+
+            if 'image_file' not in request.files:
+                flash('No file selected', 'danger')
+                return redirect(url_for('add_scrap'))
+
+            file = request.files['image_file']
+
+            if file.filename == '':
+                flash('No file selected', 'danger')
+                return redirect(url_for('add_scrap'))
+
+            if file and allowed_file(file.filename):
+                if not os.path.exists(app.config['UPLOAD_FOLDER']):
+                    os.makedirs(app.config['UPLOAD_FOLDER'])
+
+                filename = secure_filename(file.filename)
+                filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+                file.save(filepath)
+
+                # Store the relative path to the image correctly
+                file_url = f'uploads/{filename}'  # Altered line
+
+
+                new_scrap = Scrap(title=title, description=description, price=price, image_file=file_url)
+                db.session.add(new_scrap)
+                db.session.commit()
+
+                flash('Scrap added successfully!', 'success')
+                return redirect(url_for('scrap_listings'))
+
         return render_template('add-scrap.html')
+
 
 
     @app.route('/scrap-listings')

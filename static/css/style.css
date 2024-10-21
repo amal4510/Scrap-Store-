@@ -180,6 +180,7 @@ nav {
 .don-box img {
     max-height: 100px; /* Adjust image size */
     margin-bottom: 15px;
+    width:200px;
 }
 
 .don-box h3 {
@@ -360,4 +361,15 @@ footer .social a img {
 
 ::-webkit-scrollbar-thumb {
     background: #303054;
+}
+
+
+/* Add-scrap */
+.add-container{
+    margin-top: 100px;
+}
+
+#preview-container img {
+    max-width: 300px;
+    margin-top: 10px;
 }

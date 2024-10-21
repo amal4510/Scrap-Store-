@@ -1,0 +1,21 @@
+{
+    "greeting": {
+        "questions": ["hello", "hi", "hey"],
+        "response": "Hello! How can I assist you today?"
+    },
+    "account": {
+        "questions": ["how to create an account", "sign up", "register"],
+        "response": "To create an account, click on the 'Register' button and fill in the required information."
+    },
+    "login": {
+        "questions": ["how to login", "sign in", "log in"],
+        "response": "To log in, enter your username and password in the login form and click 'Submit'."
+    },
+    "scrap": {
+        "questions": ["how to add scrap", "upload scrap", "sell scrap"],
+        "response": "To add a scrap item, go to the 'Add Scrap' page, fill out the form, and upload a picture."
+    },
+    "default": {
+        "response": "I'm not sure about that. Can you rephrase your question?"
+    }
+}
