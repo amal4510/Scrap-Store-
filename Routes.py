@@ -1,6 +1,7 @@
-from flask import render_template, redirect, url_for, request, flash,session
+from flask import render_template, redirect, url_for, request, flash,session,jsonify
 from Model import User,Scrap
 from database import db
+from bot import auctions
 from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import secure_filename
 import os
@@ -116,6 +117,11 @@ def register_routes(app):
 
         return render_template('add-scrap.html')
 
+    
+    @app.route('/auctions', methods=['GET'])
+    def get_auctions():
+        # return jsonify(auctions)
+        return render_template('auction.html')
 
 
     @app.route('/scrap-listings')

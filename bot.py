@@ -1,6 +1,5 @@
-from flask import Flask, jsonify
 
-app = Flask(__name__)
+
 
 # Mock auction data
 auctions = [
@@ -22,9 +21,4 @@ auctions = [
     }
 ]
 
-@app.route('/auctions', methods=['GET'])
-def get_auctions():
-    return jsonify(auctions)
 
-if __name__ == '__main__':
-    app.run(debug=True)

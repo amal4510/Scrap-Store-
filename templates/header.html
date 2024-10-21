@@ -3,7 +3,7 @@
     <header>
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-dark">
-                <a class="navbar-brand" href="#home">Scrapify</a>
+                <a class="navbar-brand" href="#home">Scrap Collector</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -11,6 +11,9 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{{url_for('get_auctions')}}">Auction</a>
+                        </li>
                         <li class="nav-item active">
                             <a class="nav-link" href="{{url_for('index')}}#home">Home <span class="sr-only">(current)</span></a>
                         </li>

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scrap Collector</title>
+    <title>Scrapify</title>
     <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
     <link rel="stylesheet" href="{{url_for('static', filename='css/responsive.css')}}">
     <link rel="stylesheet" href="{{url_for('static',filename='css/chatbot.css')}}">
@@ -18,7 +18,6 @@
 </head>
 
 <body>
-<<<<<<< HEAD
 
 
     
@@ -39,74 +38,6 @@
         <div class="chat-footer">
             <input type="text" id="user-input" placeholder="Type your message..." onkeypress="checkEnter(event)">
             <button class="send-btn" onclick="sendMessage()">Send</button>
-=======
-    <div class="fixed-top">
-        <header>
-            <div class="container">
-                <nav class="navbar navbar-expand-lg navbar-dark">
-                    <a class="navbar-brand" href="#home">Scrap Collector</a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse"
-                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav ml-auto">
-                            <li class="nav-item active">
-                                <a class="nav-link" href="#home">Home <span class="sr-only">(current)</span></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#donation">Donations</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#mission-id">Missions</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#about">About</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#contact">Contact</a>
-                            </li> 
-                            {% if session.username %}
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
-                            </li>
-                            <li class="nav-item">
-                                 <div class="dash"> <p id="dash">{{ session.username }}.</p></div>
-                            </li>
-                            {% else %}
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ url_for('login') }}">Login</a>
-                            </li>
-                            {% endif %}
-                        </ul>
-                    </div>
-                </nav>
-            </div>
-        </header>
-        <div class="cont-sec">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <p>Contact No : <a href="tel:+9198659****59">+91 xxxxxxxxxx</a></p>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="social">
-                            <a href="#"><img src="{{url_for('static', filename='img/icons/facebook.png')}}"
-                                    alt="facebook"></a>
-                            <a href="#"><img src="{{url_for('static', filename='img/icons/instagram.png')}}"
-                                    alt="instagram"></a>
-                            <a href="#"><img src="{{url_for('static', filename='img/icons/youtube.png')}}"
-                                    alt="youtube"></a>
-                            <a href="#"><img src="{{url_for('static', filename='img/icons/linkedin.png')}}"
-                                    alt="linkedin"></a>
-                            <a href="#"><img src="{{url_for('static', filename='img/icons/gmail.png')}}"
-                                    alt="gmail"></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
->>>>>>> c8e8e07d39d44ed5fe056fe7c3f62d874ce4cd07
         </div>
     </div>
     <script>
@@ -121,8 +52,8 @@
                     <div class="col-lg-6 align-item-center">
                         <div class="home-info">
                             <h1>Alone we can do little, together we can do so much</h1>
-                            <h4>At Scrap Collector, we simplify waste management by transforming discarded items into valuable resources that help those in need. <br>
-                                Together, we're creating a cleaner, more sustainable community.
+                            <h4>At Scrapify, we make waste management easy and efficient, helping those in need by turning discarded materials into valuable resources. <br>
+                                Together, we’re building a cleaner, greener community.
                             </h4>
                             <br>
                             <div class="buttons">
@@ -248,10 +179,7 @@
                     </div>
                 </div>
             </div>
-<<<<<<< HEAD
            <a href="{{url_for('scrap_listings')}}"> <button class="btn1">More</button></a>
-=======
->>>>>>> c8e8e07d39d44ed5fe056fe7c3f62d874ce4cd07
         </div>
     </section>
     
@@ -259,7 +187,7 @@
         <div class="container">
             <div class="heading">
                 <h2>Our Missions</h2>
-                <p>At Scrap Collector, we are dedicated to making a positive impact through efficient waste management and charitable giving. Our mission is to ensure valuable resources are not wasted and those in need receive essential support. <br> <br>
+                <p>At Scrapify, we are committed to making a positive impact through effective waste management and charitable donations. Our mission is to ensure that valuable resources are not wasted and that those in need receive essential support. <br> <br>
                     We strive to:
                     <ul>
                         <li>
@@ -309,7 +237,7 @@
                     <div class="heading">
                         <h2>What We Do</h2>
                     </div>
-                    <p>At Scrap Collector, we focus on transforming waste into valuable resources while supporting our communities. We collect various recyclable materials—such as clothes, electronics, and paper—and ensure they are processed responsibly. Through partnerships with local organizations, we deliver these items to individuals and families in need.</p>
+                    <p>At Scrapify, we focus on transforming waste into valuable resources while supporting our communities. We collect various recyclable materials—such as clothes, electronics, and paper—and ensure they are processed responsibly. Through partnerships with local organizations, we deliver these items to individuals and families in need.</p>
                         <div class="col-lg-8 order-first order-lg-last">
                             <div class="heading">
                                 <h2>Why We Do</h2>
@@ -317,14 +245,6 @@
                     <p>We believe every piece of waste can make a difference. Our mission emphasizes environmental sustainability and social responsibility. By effectively managing waste, we reduce landfill impact and promote a culture of giving within our communities. Driven by a desire to empower those in need and educate the public about recycling, we aim to create a more sustainable future. Together, we can turn waste into opportunities for a better tomorrow.
                     </p>
             </div>
-        </div>
-    </section>
-
-    <section id="auction-section">
-        <div class="container">
-            <h2>Join Our Live Auctions</h2>
-            <p>Scrap Collector offers an interactive auction system where different companies can participate and bid on waste materials. Don't miss the opportunity to get the best deals on scrap materials.</p>
-            <a href="{{ url_for('auction_page') }}" class="btn-auction">Explore Auctions</a>
         </div>
     </section>
 
