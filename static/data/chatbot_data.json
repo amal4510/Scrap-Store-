@@ -15,6 +15,22 @@
         "questions": ["how to add scrap", "upload scrap", "sell scrap"],
         "response": "To add a scrap item, go to the 'Add Scrap' page, fill out the form, and upload a picture."
     },
+    "auction": {
+        "questions": ["how to join an auction", "participate in auction", "bid on scrap"],
+        "response": "To join an auction, visit the 'Auction' section, choose the scrap item you're interested in, and place your bid."
+    },
+    "payment": {
+        "questions": ["how to make a payment", "pay for scrap", "payment methods"],
+        "response": "You can pay via credit card, debit card, or UPI after your bid is accepted."
+    },
+    "schedule": {
+        "questions": ["how to schedule scrap pickup", "book scrap pickup", "pickup schedule"],
+        "response": "You can schedule a pickup from the 'Schedule Pickup' page by selecting a date and time."
+    },
+    "contact_support": {
+        "questions": ["how to contact support", "need help", "customer service"],
+        "response": "For support, go to the 'Contact Us' page or email us at support@technocyte.com."
+    },
     "default": {
         "response": "I'm not sure about that. Can you rephrase your question?"
     }

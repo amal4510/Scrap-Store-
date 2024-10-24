@@ -1,3 +1,0 @@
-SECRET_KEY = "SCRAPPER1234567890"
-
-DATABASE_KEY = "sqlite:///mydatabase.db"
