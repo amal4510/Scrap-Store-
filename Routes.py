@@ -80,7 +80,7 @@ def register_routes(app):
         if 'username' not in session:
             flash('Please log in to add scrap', 'danger')
             return redirect(url_for('login'))
-        print(session['id'])
+    
         if request.method == 'POST':
             title = request.form['title']
             description = request.form['description']

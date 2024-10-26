@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Submit Scrap Information</title>
     <!-- Bootstrap 5 CSS -->
-<<<<<<< HEAD
+
     <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
     <link rel="stylesheet" href="{{url_for('static', filename='css/responsive.css')}}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
@@ -13,10 +13,10 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-=======
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
->>>>>>> c8e8e07d39d44ed5fe056fe7c3f62d874ce4cd07
+
 </head>
 <body style="background-color: #6a994e;">
 
@@ -25,7 +25,7 @@
     <div class="container add-container">
         <h2 class="mb-4">Submit Your Scrap Information</h2>
 
-<<<<<<< HEAD
+
         <!-- Flash Messages -->
         {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
@@ -53,21 +53,9 @@
                 <label for="description" class="form-label">Description</label>
                 <textarea class="form-control" id="description" name="description" rows="4" placeholder="Describe the scrap" required></textarea>
             </div>
-=======
-        <!-- Scrap Price -->
-        <div class="mb-3">
-            <label for="price" class="form-label">Price (IND)</label>
-            <input type="number" step="0.01" class="form-control" id="price" name="price" placeholder="Enter the scrap price" required>
-        </div>
-        
-        <!-- Submit Button -->
-        <button type="submit" class="btn btn-primary">Submit Scrap</button>
-    </form>
-</div>
->>>>>>> c8e8e07d39d44ed5fe056fe7c3f62d874ce4cd07
 
-            <!-- Scrap Price -->
-            <div class="mb-3">
+              <!-- Scrap Price -->
+              <div class="mb-3">
                 <label for="price" class="form-label">Price (USD)</label>
                 <input type="number" step="0.01" class="form-control" id="price" name="price" placeholder="Enter the scrap price" required>
             </div>
@@ -83,6 +71,8 @@
             <button type="submit" class="btn1">Submit Scrap</button>
         </form>
     </div>
+
+          
 
     <!-- Bootstrap 5 JS and Popper.js -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
