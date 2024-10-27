@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, render_template
 from database import init_db, db
 from Routes import register_routes
 import os
@@ -18,6 +18,11 @@ init_db(app)
 
 # Register routes from external file
 register_routes(app)
+
+@app.route('/pickup')
+def pickup():
+    return render_template('pickup.html')
+
 
 # API route to fetch scrap prices in real-time
 @app.route('/getScrapPrices')

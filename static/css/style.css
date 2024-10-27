@@ -31,7 +31,7 @@ body {
 }
 
 /* Buttons */
-.btn1 {
+.btn1, .btn2 {
     font-size: 1rem;
     font-weight: 400;
     background-color: #bc4749;
@@ -43,6 +43,11 @@ body {
 }
 
 .btn1:hover {
+    background-color: #e6edff;
+    color: #6a994e;
+}
+
+.btn2:hover {
     background-color: #e6edff;
     color: #6a994e;
 }
@@ -372,4 +377,97 @@ footer .social a img {
 #preview-container img {
     max-width: 300px;
     margin-top: 10px;
+}
+
+
+/* Pickup section styles */
+.pickup-section {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    text-align: center;
+    margin-top: 75px;
+}
+
+.pickup-section h1 {
+    font-size: 1.8em;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.pickup-section h2 {
+    font-size: 1.2em;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.pickup-section p {
+    font-size: 1em;
+    color: #555;
+    margin-bottom: 25px;
+}
+
+/* Phone container styles */
+.phone-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.phone-container label {
+    margin-right: 10px;
+    font-size: 1em;
+    color: #333;
+}
+
+.phone-container span {
+    margin-right: 5px;
+    font-weight: bold;
+    color: #35979d;
+}
+
+.phone-container input {
+    width: 100%;
+    max-width: 180px;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+    color: #333;
+}
+
+/* Button styling */
+.pickup-btn {
+    padding: 10px 20px;
+    background-color: #35979d;
+    color: #fff;
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.pickup-btn:hover {
+    background-color: #2a7b80;
+}
+
+/* Support text styling */
+.support-text {
+    font-size: 0.9em;
+    color: #666;
+    margin-top: 15px;
+}
+
+.support-text a {
+    color: #35979d;
+    text-decoration: none;
+}
+
+.support-text a:hover {
+    text-decoration: underline;
 }

@@ -1,0 +1,33 @@
+<link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+<body style="background-color: #a7c957;">
+<section class="pickup-section">
+    <h1>Sell Your Recyclables Online with Scrap Store !</h1>
+    <h2>Paper - Plastics - Metals - Appliances </h2>
+    <p>You can also download the Scrap Store App!</p>
+    
+    <div class="phone-container">
+        <label for="phone">Mobile</label>
+        <span>+91</span>
+        <input type="text" id="phone" placeholder="Enter your mobile number">
+    </div>
+
+    <button class="pickup-btn" onclick="schedulePickup()">Schedule a Pickup</button>
+
+    <div class="support-text">
+        Facing Problems? <a href="tel:+918595358613">Call us at +91 8595358613</a>
+    </div>
+</section>
+
+<script>
+    function schedulePickup() {
+        const phone = document.getElementById("phone").value;
+        
+        if (phone.match(/^\d{10}$/)) {
+            alert(`Thank you! Your pickup has been scheduled. We’ll contact you at +91 ${phone}.`);
+            // Add any backend integration code here, such as sending the data to your server
+        } else {
+            alert("Please enter a valid 10-digit phone number.");
+        }
+    }
+</script>
+</body>
