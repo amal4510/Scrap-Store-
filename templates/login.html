@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="{{url_for('static', filename='auth.css')}}">
 </head>
 
-<body class="bg-primary">
+<body style="background-color: #c7f9cc;">
     <div class="container d-flex justify-content-center align-items-center min-vh-100">
         <div class="row w-100 bg-white rounded-3 shadow">
             <!-- Image Section -->
@@ -27,7 +27,7 @@
                         <div class="mb-3">
                             <input type="password" name="password" class="form-control" placeholder="Password" required>
                         </div>
-                        <button type="submit" class="btn btn-primary w-100">Login</button>
+                        <button type="submit" style="background-color: #bc4749; color: white;">Login</button>
                     </form>
                     <p class="text-center mt-3">Don't have an account? <a href="#" id="showRegister">Register</a></p>
                     {% with messages = get_flashed_messages(with_categories=true) %}
@@ -56,7 +56,7 @@
                         <div class="mb-3">
                             <input type="password" name="confirm_password" class="form-control" placeholder="Confirm Password" required>
                         </div>
-                        <button type="submit" class="btn btn-primary w-100">Register</button>
+                        <button type="submit" style="background-color: #bc4749; color: white;">Register</button>
                     </form>
                     <p class="text-center mt-3">Already have an account? <a href="#" id="showLogin">Login</a></p>
                 </div>

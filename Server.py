@@ -31,6 +31,10 @@ auctions = {
 def pickup():
     return render_template('pickup.html')
 
+@app.route('/user/dashboard')
+def user_dashboard():
+    return render_template('user_dashboard.html')
+
 # Route to render the auction page
 @app.route('/auction')
 def auction():

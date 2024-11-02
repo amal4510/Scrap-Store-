@@ -9,7 +9,7 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #386641;
+    background-color: #c7f9cc;
     /* Updated background color */
 }
 
@@ -96,7 +96,7 @@ input {
 button:hover {
     color: #fff;
     /* Changed hover text color for buttons */
-    background: #4e34b6;
+    background: #bc4749;
     /* Button hover effect */
     transition: 0.5s ease;
 }
@@ -126,14 +126,14 @@ a {
 
 .login-form input:focus {
     background: transparent;
-    border: 1px solid #4e34b6;
+    border: 1px solid #bc4749;
 }
 
 .login-form button {
     font-size: 18px;
     color: #fff;
     width: 100%;
-    background: #4e34b6;
+    background: #bc4749;
     border: none;
     padding: 14px 15px;
     font-weight: 600;
@@ -141,7 +141,7 @@ a {
 }
 
 p.account a {
-    color: #4e34b6;
+    color: #bc4749;
 }
 
 p.account a:hover {
@@ -149,7 +149,7 @@ p.account a:hover {
 }
 
 .bg-primary {
-    background-color: #4e34b6 !important;
+    background-color: #bc4749 !important;
 }
 
 h2 {
@@ -158,7 +158,7 @@ h2 {
 }
 
 a {
-    color: #4e34b6;
+    color: #bc4749;
 }
 
 a:hover {
