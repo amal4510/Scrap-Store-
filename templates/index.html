@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,10 +16,7 @@
     <script src = {{url_for('static',filename="js/chatbot.js")}}></script>
 </head>
 
-<body>
-
-
-    
+<body style="background-color: #c7f9cc;">    
     {%include 'header.html'%}
     <!-- CHat bot icon-->
     <div id="chat-icon" onclick="toggleChat()">
@@ -264,7 +260,7 @@
         <div class="container">
             <div class="heading">
                 <h2>Connect With Us</h2>
-                <p>Fill this form, our team will collect your <span>Donation</span> or <span>Wastage</span> from your
+                <p>Fill this form, our team will collect your <span>Wastage</span> from your
                     place.</p>
             </div>
             <div class="row">
@@ -289,7 +285,7 @@
                                         <div class="col-lg-12">
                                             <div class="form-group">
                                                 <select name="donation" id="donation" required>
-                                                    <option value="">Choose Donation or Wastage</option>
+                                                    <option value="">Choose Wastage</option>
                                                     <option value="normal">Normal Recyclables</option>
                                                     <option value="papers">Office Paper (A3/A4)</option>
                                                     <option value="newspaper">Newspaper</option>

@@ -3,15 +3,17 @@ from database import init_db, db
 from Routes import register_routes
 import os
 from dotenv import load_dotenv
+from flask_socketio import SocketIO, emit
+import random 
 
 # Load environment variables
 load_dotenv()
-
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # Initialize Flask app
 app = Flask(__name__)
-app.config['SECRET_KEY'] = SECRET_KEY  
+app.config['SECRET_KEY'] = SECRET_KEY
+socketio = SocketIO(app)
 
 # Initialize the database
 init_db(app)
@@ -19,13 +21,25 @@ init_db(app)
 # Register routes from external file
 register_routes(app)
 
+# Placeholder for auction items - this can be fetched dynamically from a database
+auctions = {
+    1: {"id": 1, "title": "Scrap Metal Auction", "current_bid": random.randint(100, 1000)},
+    2: {"id": 2, "title": "Old Electronics", "current_bid": random.randint(100, 1000)}
+}
 
+
+@app.route('/user/dashboard')
+def user_dashboard():
+    return render_template('user_dashboard.html')
+
+# Route to render the auction page
+@app.route('/auction')
+def auction():
+    return render_template('auction.html')
 
 # API route to fetch scrap prices in real-time
 @app.route('/getScrapPrices')
 def get_scrap_prices():
-    # Fetch real-time prices from your database or external source
-    # For now, we're using static prices as an example
     prices = {
         'normal_recyclables': '₹10/kg',
         'office_paper': '₹5/kg',
@@ -42,10 +56,30 @@ def get_scrap_prices():
     }
     return jsonify(prices)
 
-# Uncomment this if you want to drop all tables (for database reset)
-# with app.app_context():
-#     db.drop_all()
-#     print("All tables have been dropped successfully!")
+# API route to fetch auction data
+@app.route('/auction')
+def auction_page():
+    return render_template('auction.html')
+
+# API route to fetch auction data
+@app.route('/api/auctions')
+def fetch_auctions():
+    return jsonify(list(auctions.values()))
+
+# Socket.IO event handler for placing a bid
+@socketio.on('place_bid')
+def handle_place_bid(data):
+    auction_id = data['auction_id']
+    new_bid = data['new_bid']
+    company_name = data['company_name']  # Get company name
+    if auction_id in auctions and new_bid > auctions[auction_id]['current_bid']:
+        auctions[auction_id]['current_bid'] = new_bid
+        # Broadcast the updated bid and company name to all clients
+        emit('update_bid', {
+            'auction_id': auction_id,
+            'new_bid': new_bid,
+            'company_name': company_name
+        }, broadcast=True)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    socketio.run(app, debug=True, allow_unsafe_werkzeug=True)

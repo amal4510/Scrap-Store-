@@ -1,61 +1,40 @@
-document.addEventListener("DOMContentLoaded", function() {
-    // Mock auction data
-    const auctions = [
-        {
-            id: 1,
-            name: "Metal Scrap Auction",
-            date: "2024-10-25",
-            time: "10:00 AM",
-            companies: ["Company A", "Company B", "Company C"],
-            status: "Ongoing",
-        },
-        {
-            id: 2,
-            name: "Plastic Waste Auction",
-            date: "2024-10-28",
-            time: "2:00 PM",
-            companies: ["Company D", "Company E"],
-            status: "Upcoming",
-        },
-        {
-            id: 3,
-            name: "Electronic Waste Auction",
-            date: "2024-10-30",
-            time: "11:00 AM",
-            companies: ["Company F", "Company G", "Company H"],
-            status: "Upcoming",
-        }
-    ];
+const socket = io.connect(location.protocol + '//' + document.domain + ':' + location.port);
 
-    const auctionList = document.getElementById("auction-list");
-    const auctionDetails = document.getElementById("auction-details");
+$(document).ready(() => {
+    loadAuctions();
+});
 
-    // Populate auction list
-    auctions.forEach(auction => {
-        const auctionItem = document.createElement("div");
-        auctionItem.classList.add("auction-item");
-        auctionItem.textContent = `${auction.name} - ${auction.date} at ${auction.time}`;
-        auctionItem.dataset.auctionId = auction.id;
+// Function to place a bid
+function placeBid(auctionId) {
+    const newBid = prompt("Enter your bid amount:");
+    if (newBid && !isNaN(newBid)) {
+        socket.emit('place_bid', { auction_id: auctionId, new_bid: parseInt(newBid) });
+    }
+}
 
-        auctionList.appendChild(auctionItem);
-    });
-
-    // Event listener for selecting an auction
-    auctionList.addEventListener("click", function(event) {
-        const auctionId = event.target.dataset.auctionId;
-        const selectedAuction = auctions.find(auction => auction.id == auctionId);
-
-        if (selectedAuction) {
-            auctionDetails.innerHTML = `
-                <h3>${selectedAuction.name}</h3>
-                <p>Date: ${selectedAuction.date}</p>
-                <p>Time: ${selectedAuction.time}</p>
-                <p>Status: ${selectedAuction.status}</p>
-                <h4>Participating Companies:</h4>
-                <ul>
-                    ${selectedAuction.companies.map(company => `<li>${company}</li>`).join('')}
-                </ul>
-            `;
+// Function to load auctions from the server
+function loadAuctions() {
+    $.ajax({
+        url: "/api/auctions",
+        method: "GET",
+        success: function(data) {
+            const auctionList = $('#auction-list');
+            auctionList.empty();
+            data.forEach(item => {
+                auctionList.append(`
+                    <div class="auction-item" id="auction-${item.id}">
+                        <h3>${item.title}</h3>
+                        <p>Current Bid: ₹<span class="current-bid">${item.current_bid}</span></p>
+                        <button onclick="placeBid(${item.id})">Place Bid</button>
+                    </div>
+                `);
+            });
         }
     });
+}
+
+// Listen for updates from the server
+socket.on('update_bid', function(data) {
+    const auctionItem = $(`#auction-${data.auction_id}`);
+    auctionItem.find('.current-bid').text(data.new_bid);
 });

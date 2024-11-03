@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/socket.io-client/dist/socket.io.min.js"></script>
+    <style>
+        body {
+            background-color: #c7f9cc;
+        }
+        .card {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>User Dashboard</h1>
+        
+        <!-- User Profile Section -->
+        <div class="card">
+            <div class="card-header">
+                <h5>User Profile</h5>
+            </div>
+            <div class="card-body">
+                <p id="user-name">Name: John Doe</p>
+                <p id="user-email">Email: john.doe@example.com</p>
+                <button class="btn btn-primary" id="edit-profile-btn">Edit Profile</button>
+            </div>
+        </div>
+
+        <!-- Current Bids Section -->
+        <div class="card">
+            <div class="card-header">
+                <h5>Current Bids</h5>
+            </div>
+            <div class="card-body" id="current-bids">
+                <!-- Bids will be dynamically populated here -->
+            </div>
+        </div>
+
+        <!-- Notifications Section -->
+        <div class="card">
+            <div class="card-header">
+                <h5>Notifications</h5>
+            </div>
+            <div class="card-body" id="notifications">
+                <!-- Notifications will be dynamically populated here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const socket = io(); // Initialize Socket.IO
+
+        // Function to update current bids in real-time
+        socket.on('update_bid', function(data) {
+            const { auction_id, new_bid, company } = data;
+            const bidElement = document.getElementById('current-bids');
+            bidElement.innerHTML += `<p>Company ${company} placed a bid of ₹${new_bid} on Auction ID ${auction_id}!</p>`;
+        });
+
+        // Example to show a notification
+        socket.on('new_notification', function(message) {
+            const notificationElement = document.getElementById('notifications');
+            notificationElement.innerHTML += `<p>${message}</p>`;
+        });
+    </script>
+</body>
+</html>

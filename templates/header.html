@@ -11,14 +11,14 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item active">
+                        <li class="nav-item">
                             <a class="nav-link" href="{{url_for('get_auctions')}}">Auction</a>
                         </li>
                         <li class="nav-item active">
                             <a class="nav-link" href="{{url_for('index')}}#home">Home <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{url_for('add_scrap')}}">Donations</a>
+                            <a class="nav-link" href="{{url_for('index')}}#donation">Donations</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{url_for('index')}}#mission-id">Missions</a>
@@ -28,6 +28,9 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{url_for('index')}}#contact">Contact</a>
+                        </li> 
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{url_for('user_dashboard')}}">Profile</a>
                         </li> 
                         {% if session.username %}
                         <li class="nav-item">
@@ -70,3 +73,4 @@
         </div>
     </div>
 </div>
+
