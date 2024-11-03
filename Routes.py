@@ -133,11 +133,11 @@ def register_routes(app):
     
 
         
-    @app.route('/pickup',methods=['GET','POST'])
-    def pickup(): 
-        if request.method=='POST':
-            data = request.get_json()
-            value = data.get('value')           
-            # send_email("macner001@gmail.com", "Requested Contact to sechedule", f"Received value: {value}")
-            return jsonify({'status': 'success', 'value':data})
-        return render_template('pickup.html')
+    # @app.route('/pickup',methods=['GET','POST'])
+    # def pickup(): 
+    #     if request.method=='POST':
+    #         data = request.get_json()
+    #         value = data.get('value')           
+    #         # send_email("macner001@gmail.com", "Requested Contact to sechedule", f"Received value: {value}")
+    #         return jsonify({'status': 'success', 'value':data})
+    #     return render_template('pickup.html')
