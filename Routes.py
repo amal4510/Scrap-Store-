@@ -5,6 +5,8 @@ from bot import auctions
 from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import secure_filename
 import os
+# from app import send_email
+
 
 def register_routes(app):
     @app.route('/')
@@ -107,8 +109,8 @@ def register_routes(app):
                 # Store the relative path to the image correctly
                 file_url = f'uploads/{filename}'  # Altered line
 
-
-                new_scrap = Scrap(title=title, description=description, price=price, image_file=file_url)
+                user_name = session['username']
+                new_scrap = Scrap(title=title, description=description, price=price, image_file=file_url, user_id=user_name)
                 db.session.add(new_scrap)
                 db.session.commit()
 
@@ -128,3 +130,14 @@ def register_routes(app):
     def scrap_listings():
         scraps = Scrap.query.all()  # Fetch all scraps from the database
         return render_template('scrap-listing.html', scraps=scraps)
+    
+
+        
+    @app.route('/pickup',methods=['GET','POST'])
+    def pickup(): 
+        if request.method=='POST':
+            data = request.get_json()
+            value = data.get('value')           
+            # send_email("macner001@gmail.com", "Requested Contact to sechedule", f"Received value: {value}")
+            return jsonify({'status': 'success', 'value':data})
+        return render_template('pickup.html')
