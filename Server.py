@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, render_template,request
+from flask import Flask, jsonify, render_template,session
 from database import init_db, db
 from Routes import register_routes
 import os
@@ -30,6 +30,9 @@ auctions = {
 
 @app.route('/user/dashboard')
 def user_dashboard():
+    if 'username' in session:
+        username = session['username']
+        print(session)
     return render_template('user_dashboard.html')
 
 # Route to render the auction page

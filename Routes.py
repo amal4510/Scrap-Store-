@@ -12,7 +12,7 @@ def register_routes(app):
     @app.route('/')
     def index():
         if 'username' in session:
-            username = session['username']
+            username = session['username']  
             return render_template('index.html')
         else:
             return render_template('index.html')
@@ -122,7 +122,6 @@ def register_routes(app):
     
     @app.route('/auctions', methods=['GET'])
     def get_auctions():
-        # return jsonify(auctions)
         return render_template('auction.html')
 
 
@@ -133,11 +132,11 @@ def register_routes(app):
     
 
         
-    # @app.route('/pickup',methods=['GET','POST'])
-    # def pickup(): 
-    #     if request.method=='POST':
-    #         data = request.get_json()
-    #         value = data.get('value')           
-    #         # send_email("macner001@gmail.com", "Requested Contact to sechedule", f"Received value: {value}")
-    #         return jsonify({'status': 'success', 'value':data})
-    #     return render_template('pickup.html')
+    @app.route('/pickup',methods=['GET','POST'])
+    def pickup(): 
+        if request.method=='POST':
+            data = request.get_json()
+            value = data.get('value')           
+            # send_email("macner001@gmail.com", "Requested Contact to sechedule", f"Received value: {value}")
+            return jsonify({'status': 'success', 'value':data})
+        return render_template('pickup.html')
