@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scrap Bids</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(120deg, #f0f4f7, #d9e4ec);
+            font-family: 'Arial', sans-serif;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #343a40;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .table-responsive {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .table {
+            margin: 0;
+            border-collapse: separate;
+            border-spacing: 0;
+        }
+
+        .table thead {
+            background: #212529;
+            color: white;
+        }
+
+        .table-hover tbody tr:hover {
+            background-color: #f8f9fa;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        th, td {
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        th {
+            font-size: 1.1rem;
+            padding: 1rem;
+        }
+
+        td {
+            font-size: 1rem;
+            padding: 0.75rem;
+        }
+
+        td:first-child {
+            font-weight: bold;
+            color: #495057;
+        }
+
+        .table-dark {
+            border-bottom: 3px solid #495057;
+        }
+    </style>
+</head>
+<body>
+    <div class="container my-5">
+        <h1 class="text-center mb-4">Scrap Bids</h1>
+
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover align-middle">
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col">Scrap Title</th>
+                        <th scope="col">Bidder Name</th>
+                        <th scope="col">Bid Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in scraps_with_bids %}
+                        {% for bid in item.bids %}
+                        <tr>
+                            <td>{{ item.scrap.title }}</td>
+                            <td>{{ bid.username }}</td>
+                            <td>${{ bid.bid_amount }}</td>
+                        </tr>
+                        {% endfor %}
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

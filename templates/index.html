@@ -1,22 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scrap Store</title>
-    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
-    <link rel="stylesheet" href="{{url_for('static', filename='css/responsive.css')}}">
-    <link rel="stylesheet" href="{{url_for('static',filename='css/chatbot.css')}}">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-    <script src = {{url_for('static',filename="js/chatbot.js")}}></script>
-</head>
 
-<body style="background-color: #c7f9cc;">    
     {%include 'header.html'%}
     <!-- CHat bot icon-->
     <div id="chat-icon" onclick="toggleChat()">
@@ -53,8 +35,7 @@
                             </h4>
                             <br>
                             <div class="buttons">
-                                <a href="{{url_for('add_scrap')}}" class="btn1">Buy Scraps</a>
-                                <a href="{{url_for('pickup')}}" class="btn2">Schedule Pickup</a> 
+                                <a href="{{url_for('add_scrap')}}" class="btn1">Sell Scraps</a>
                             </div>
                         </div>
                     </div>
@@ -75,13 +56,31 @@
             </div>
             <div class="row">
                 <!-- Normal Recyclables -->
+                {% for product in products %}
+                <div class="col-lg-4">
+                    <div class="don-box">
+                        <img src="{{ url_for('static', filename=product.image_file) }}" alt="{{product.name}}">
+                        <h3>{{product.title}}</h3>
+                        <p>{{product.description}}</p>
+                            
+                {% if product.status == 'sold' %}
+                <span style="color:red;" class="sold">Sold</span>
+            {% else %}
+                <span style="color:yellow;" class="selling">For Sale</span>
+            {% endif %}
+                        
+                        <p><strong>Price:</strong> <span id="price-normal-recyclables">${{product.price}}</span></p>
+                        <a href="{{url_for('auction')}}" class="btn1">Bid Now</a>
+                    </div>
+                </div>
+                {% endfor %}
                 <div class="col-lg-4">
                     <div class="don-box">
                         <img src="{{url_for('static', filename='img/don/normal_rec.jpg')}}" alt="Normal Recyclables">
                         <h3>Normal Recyclables</h3>
                         <p>Your everyday recyclables, contributing to a cleaner environment.</p>
                         <p><strong>Price:</strong> <span id="price-normal-recyclables">Loading...</span></p>
-                        <a href="#contact" class="btn1">Recycle Now</a>
+                        <a href="#contact" class="btn1">Bid Now</a>
                     </div>
                 </div>
                 <div class="col-lg-4">
@@ -90,7 +89,7 @@
                         <h3>Office Paper (A3/A4)</h3>
                         <p>Recycle your office paper waste and help reduce deforestation.</p>
                         <p><strong>Price:</strong> <span id="price-office-paper">Loading...</span></p>
-                        <a href="#contact" class="btn1">Recycle Now</a>
+                        <a href="#contact" class="btn1">Bid Now</a>
                     </div>
                 </div>
                 <div class="col-lg-4">
@@ -99,7 +98,7 @@
                         <h3>Newspaper</h3>
                         <p>Recycle old newspapers and save energy. Market rates dropped recently.</p>
                         <p><strong>Price:</strong> <span id="price-newspaper">Loading...</span></p>
-                        <a href="#contact" class="btn1">Recycle Now</a>
+                        <a href="#contact" class="btn1">Bid Now</a>
                     </div>
                 </div>
                 <!-- Large Appliances -->
@@ -109,7 +108,7 @@
                         <h3>AC Units</h3>
                         <p>Recycle your old AC units for responsible disposal.</p>
                         <p><strong>Price:</strong> <span id="price-ac-units">Loading...</span></p>
-                        <a href="#contact" class="btn1">Recycle Now</a>
+                        <a href="#contact" class="btn1">Bid Now</a>
                     </div>
                 </div>
                 <div class="col-lg-4">
@@ -118,7 +117,7 @@
                         <h3> Washing Machine</h3>
                         <p>Recycling your old washing machines keeps waste out of landfills.</p>
                         <p><strong>Price:</strong> <span id="price-washing-machine">Loading...</span></p>
-                        <a href="#contact" class="btn1">Recycle Now</a>
+                        <a href="#contact" class="btn1">Bid Now</a>
                     </div>
                 </div>
                 <div class="col-lg-4">
@@ -127,7 +126,7 @@
                         <h3>Single Door Fridge</h3>
                         <p>Recycle single-door fridges for proper waste management.</p>
                         <p><strong>Price:</strong> <span id="price-fridge">Loading...</span></p>
-                        <a href="#contact" class="btn1">Recycle Now</a>
+                        <a href="#contact" class="btn1">Bid Now</a>
                     </div>
                 </div>
                 <!-- Small Appliances -->
@@ -137,7 +136,7 @@
                         <h3>Printer/Scanner</h3>
                         <p>Recycle old printers and reduce electronic waste.</p>
                         <p><strong>Price:</strong> <span id="price-printer">Loading...</span></p>
-                        <a href="#contact" class="btn1">Recycle Now</a>
+                        <a href="#contact" class="btn1">Bid Now</a>
                     </div>
                 </div>
                 <div class="col-lg-4">
@@ -146,7 +145,7 @@
                         <h3>Ceiling Fan</h3>
                         <p>Recycle old ceiling fans and contribute to eco-friendly practices.</p>
                         <p><strong>Price:</strong> <span id="price-ceiling-fan">Loading...</span></p>
-                        <a href="#contact" class="btn1">Recycle Now</a>
+                        <a href="#contact" class="btn1">Bid Now</a>
                     </div>
                 </div>
                 <div class="col-lg-4">
@@ -155,7 +154,7 @@
                         <h3>Microwave</h3>
                         <p>Don’t let microwaves add to waste—recycle them instead.</p>
                         <p><strong>Price:</strong> <span id="price-microwave">Loading...</span></p>
-                        <a href="#contact" class="btn1">Recycle Now</a>
+                        <a href="#contact" class="btn1">Bid Now</a>
                     </div>
                 </div>
                 <!-- Mobiles & Gadgets -->
@@ -165,7 +164,7 @@
                         <h3>Scrap Laptop</h3>
                         <p>Turn your old laptops into valuable recycled resources.</p>
                         <p><strong>Price:</strong> <span id="price-scrap-laptop">Loading...</span></p>
-                        <a href="#contact" class="btn1">Recycle Now</a>
+                        <a href="#contact" class="btn1">Bid Now</a>
                     </div>
                 </div>
                 <div class="col-lg-4">
@@ -174,16 +173,7 @@
                         <h3>Mobile Phones</h3>
                         <p>Recycle your old mobile phones responsibly to reduce e-waste.</p>
                         <p><strong>Price:</strong> <span id="price-mobile-phones">Loading...</span></p>
-                        <a href="#contact" class="btn1">Recycle Now</a>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="don-box">
-                        <img src="{{url_for('static', filename='img/don/cpu.jpg')}}" alt="Computer CPU">
-                        <h3>Computer CPU</h3>
-                        <p>Recycle your old CPUs to support sustainable e-waste disposal.</p>
-                        <p><strong>Price:</strong> <span id="price-cpu">Loading...</span></p>
-                        <a href="#contact" class="btn1">Recycle Now</a>
+                        <a href="#contact" class="btn1">Bid Now</a>
                     </div>
                 </div>
             </div>
