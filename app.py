@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, session
+from numpy import sort
 from database import init_db, db
 from Model import Scrap, Bid, User
 
@@ -63,6 +64,7 @@ def bids():
             {"bid_amount": bid.bid_amount, "username": bid.user.username}
             for bid in scrap.bids
         ]
+        print(bids_info)
         scraps_with_bids.append({"scrap": scrap, "bids": bids_info})
     return render_template('bids.html', scraps_with_bids=scraps_with_bids)
 
@@ -107,4 +109,4 @@ def update_scrap(scrap_id):
     return render_template('update.html', scrap=scrap)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True,port=5001)

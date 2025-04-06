@@ -1,6 +1,7 @@
 {% include 'header.html' %}
 <main class="container mt-4">
     <div class="row">
+        {% if products %}
         {% for product in products %}
         <div class="col-md-4 mb-4">
             <div class="auction-card border shadow-sm rounded">
@@ -9,7 +10,6 @@
                     <h2 class="h5">{{ product.title }}</h2>
                     <p class="description text-muted">{{ product.description }}</p>
                     <p class="current-bid">Current Bid: <strong>${{ product.price }}</strong></p>
-                    <p class="timer text-muted">Time Remaining: <span id="countdown">02:00:00</span></p>
 
                     <!-- Display status -->
                     {% if product.status == 'sold' %}
@@ -29,6 +29,9 @@
             </div>
         </div>
         {% endfor %}
+        {% else %}
+        <p style="margin-top:200px;">No products found.</p>
+        {% endif %}
     </div>
 </main>
 </body>
