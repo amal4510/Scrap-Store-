@@ -1,0 +1,117 @@
+
+{%include 'header.html'%}
+<section class="mission" id="mission-id">
+    <div class="container">
+        <div class="heading">
+            <h2>Our Missions</h2>
+            <p>At Scrap Store, we are committed to making a positive impact through effective waste management and charitable donations. Our mission is to ensure that valuable resources are not wasted and that those in need receive essential support. <br> <br>
+                We strive to:
+                <ul>
+                    <li>
+                Facilitate Responsible Waste Management: We prioritize recycling and efficient waste disposal, transforming waste materials into reusable resources while minimizing environmental harm. </li>
+                <li>
+                Empower Communities: By collaborating with local organizations, we deliver collected donations—such as clothes, food, and electronics—to individuals and families in need, enhancing their quality of life. </li>
+                <li>
+                Promote Sustainability: We raise awareness about sustainable practices and educate the public on how small actions can contribute to environmental conservation and social responsibility. </li>
+                <li>
+                Create a Cycle of Giving: Our platform connects donors with those in need, fostering a culture of compassion and turning waste into opportunities for others. </li>
+            </ul>
+                <h5>
+                Together, we can build a cleaner, more sustainable world while uplifting our communities. </h5></p>
+        </div>
+        <div class="gallery-sec">
+            <div class="container">
+                <div class="image-container">
+                    <div class="image"><img src="{{url_for('static', filename='img/miss/1.jpg')}}" alt="Mission 1">
+                    </div>
+                    <div class="image"><img src="{{url_for('static', filename='img/miss/2.jpg')}}" alt="Mission 2">
+                    </div>
+                    <div class="image"><img src="{{url_for('static', filename='img/miss/3.jpg')}}" alt="Mission 3">
+                    </div>
+                    <div class="image"><img src="{{url_for('static', filename='img/miss/4.jpg')}}" alt="Mission 4">
+                    </div>
+                    <div class="image"><img src="{{url_for('static', filename='img/miss/5.jpg')}}" alt="Mission 5">
+                    </div>
+                    <div class="image"><img src="{{url_for('static', filename='img/miss/6.jpg')}}" alt="Mission 6">
+                    </div>
+                </div>
+            </div>
+            <div class="pop-image">
+                <span>&times;</span>
+                <img src="{{url_for('static', filename='img/gallery/1.jpg')}}" alt="Gallery Image">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="about-sec" id="about">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 about-img">
+                <img src="{{url_for('static', filename='img/img-2.jpeg')}}" alt="About Us">
+            </div>
+            <div class="col-lg-8 order-first order-lg-last">
+                <div class="heading">
+                    <h2>What We Do</h2>
+                </div>
+                <p>At Scrap Store, we focus on transforming waste into valuable resources while supporting our communities. We collect various recyclable materials—such as clothes, electronics, and paper—and ensure they are processed responsibly. Through partnerships with local organizations, we deliver these items to individuals and families in need.</p>
+                    <div class="col-lg-8 order-first order-lg-last">
+                        <div class="heading">
+                            <h2>Why We Do</h2>
+                            </div>
+                <p>We believe every piece of waste can make a difference. Our mission emphasizes environmental sustainability and social responsibility. By effectively managing waste, we reduce landfill impact and promote a culture of giving within our communities. Driven by a desire to empower those in need and educate the public about recycling, we aim to create a more sustainable future. Together, we can turn waste into opportunities for a better tomorrow.
+                </p>
+        </div>
+    </div>
+</section>
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="col-one">
+                    <h4>Scrap Collector</h4>
+                    <p>Address: Mumbai,Maharashtra 401501</p>
+                    <p>Contact No: <a href="tel:+9198659****59">+91 xxxxxxxxxx</a></p>
+                    <p>Email: <a href="mailto:foundation@code.com">domainname.com</a></p>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="col-two">
+                    <h4>Important Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#donation">Donations</a></li>
+                        <li><a href="#mission-id">Missions</a></li>
+                        <li><a href="/about">About us</a></li>
+                        <li><a href="#contact">Contact us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="col-one">
+                    <h4>Social Media</h4>
+                    <div class="social">
+                        <a href="#"><img src="{{url_for('static', filename='img/icons/facebook.png')}}"
+                                alt="facebook"></a>
+                        <a href="#"><img src="{{url_for('static', filename='img/icons/instagram.png')}}"
+                                alt="instagram"></a>
+                        <a href="#"><img src="{{url_for('static', filename='img/icons/youtube.png')}}"
+                                alt="youtube"></a>
+                        <a href="#"><img src="{{url_for('static', filename='img/icons/linkedin.png')}}"
+                                alt="linkedin"></a>
+                        <a href="#"><img src="{{url_for('static', filename='img/icons/gmail.png')}}"
+                                alt="gmail"></a>
+                    </div>
+                    <p>Copyright &copy; 2024 | All Rights Reserved</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="{{url_for('static', filename='js/script.js')}}"></script>
+</body>
+
+</html>

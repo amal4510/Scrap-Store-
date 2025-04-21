@@ -29,46 +29,9 @@
             <div class="card-body">
                 <p id="user-name">Name: {{ user.username}}</p>
                 <p id="user-email">Email: {{user.email}}</p>
-                <button class="btn btn-primary" id="edit-profile-btn">Edit Profile</button>
             </div>
         </div>
 
-        <!-- Current Bids Section -->
-        <div class="card">
-            <div class="card-header">
-                <h5>Current Bids</h5>
-            </div>
-            <div class="card-body" id="current-bids">
-                <!-- Bids will be dynamically populated here -->
-            </div>
-        </div>
 
-        <!-- Notifications Section -->
-        <div class="card">
-            <div class="card-header">
-                <h5>Notifications</h5>
-            </div>
-            <div class="card-body" id="notifications">
-                <!-- Notifications will be dynamically populated here -->
-            </div>
-        </div>
-    </div>
-
-    <script>
-        const socket = io(); // Initialize Socket.IO
-
-        // Function to update current bids in real-time
-        socket.on('update_bid', function(data) {
-            const { auction_id, new_bid, company } = data;
-            const bidElement = document.getElementById('current-bids');
-            bidElement.innerHTML += `<p>Company ${company} placed a bid of ₹${new_bid} on Auction ID ${auction_id}!</p>`;
-        });
-
-        // Example to show a notification
-        socket.on('new_notification', function(message) {
-            const notificationElement = document.getElementById('notifications');
-            notificationElement.innerHTML += `<p>${message}</p>`;
-        });
-    </script>
 </body>
 </html>

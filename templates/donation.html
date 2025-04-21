@@ -1,0 +1,204 @@
+
+{%include 'header.html'%}
+<main>
+<section class="about-sec" style="padding: 100px 0 !important;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 about-img">
+                <img src="{{url_for('static', filename='img/img-2.jpeg')}}" alt="About Us">
+            </div>
+            <div class="col-lg-8 order-first order-lg-last">
+                <div class="heading">
+                    <h2>What We Do</h2>
+                </div>
+                <p>At Scrap Store, we focus on transforming waste into valuable resources while supporting our communities. We collect various recyclable materials—such as clothes, electronics, and paper—and ensure they are processed responsibly. Through partnerships with local organizations, we deliver these items to individuals and families in need.</p>
+                    <div class="col-lg-8 order-first order-lg-last">
+                        <div class="heading">
+                            <h2>Why We Do</h2>
+                            </div>
+                <p>We believe every piece of waste can make a difference. Our mission emphasizes environmental sustainability and social responsibility. By effectively managing waste, we reduce landfill impact and promote a culture of giving within our communities. Driven by a desire to empower those in need and educate the public about recycling, we aim to create a more sustainable future. Together, we can turn waste into opportunities for a better tomorrow.
+                </p>
+        </div>
+    </div>
+</section>
+
+<section class="don-sec mt-5" id="donation">
+    <div class="container">
+        <div class="heading">
+            <h2>We Manage Wastage or Donation like..</h2>
+        </div>
+        <div class="row">
+            <!-- Normal Recyclables -->
+            {% for product in products %}
+            <div class="col-lg-4">
+                <div class="don-box">
+                    <img src="{{ url_for('static', filename=product.image_file) }}" alt="{{product.name}}">
+                    <h3>{{product.title}}</h3>
+                    <p>{{product.description}}</p>
+                        
+            {% if product.status == 'sold' %}
+            <span style="color:red;" class="sold">Sold</span>
+        {% else %}
+            <span style="color:yellow;" class="selling">For Sale</span>
+        {% endif %}
+                    
+                    <p><strong>Price:</strong> <span id="price-normal-recyclables">₹{{product.price}}</span></p>
+                    <a href="{{url_for('auction')}}" class="btn1">Bid Now</a>
+                </div>
+            </div>
+            {% endfor %}
+            <div class="col-lg-4">
+                <div class="don-box">
+                    <img src="{{url_for('static', filename='img/don/normal_rec.jpg')}}" alt="Normal Recyclables">
+                    <h3>Normal Recyclables</h3>
+                    <p>Your everyday recyclables, contributing to a cleaner environment.</p>
+                    <p><strong>Price:</strong> <span id="price-normal-recyclables">Loading...</span></p>
+                    <a href="#contact" class="btn1">Bid Now</a>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="don-box">
+                    <img src="{{url_for('static', filename='img/don/officepaper.jpg')}}" alt="Office Paper">
+                    <h3>Office Paper (A3/A4)</h3>
+                    <p>Recycle your office paper waste and help reduce deforestation.</p>
+                    <p><strong>Price:</strong> <span id="price-office-paper">Loading...</span></p>
+                    <a href="#contact" class="btn1">Bid Now</a>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="don-box">
+                    <img src="{{url_for('static', filename='img/don/newspaper.jpg')}}" alt="Newspaper">
+                    <h3>Newspaper</h3>
+                    <p>Recycle old newspapers and save energy. Market rates dropped recently.</p>
+                    <p><strong>Price:</strong> <span id="price-newspaper">Loading...</span></p>
+                    <a href="#contact" class="btn1">Bid Now</a>
+                </div>
+            </div>
+            <!-- Large Appliances -->
+            <div class="col-lg-4">
+                <div class="don-box">
+                    <img src="{{url_for('static', filename='img/don/ac.jpg')}}" alt="AC Units">
+                    <h3>AC Units</h3>
+                    <p>Recycle your old AC units for responsible disposal.</p>
+                    <p><strong>Price:</strong> <span id="price-ac-units">Loading...</span></p>
+                    <a href="#contact" class="btn1">Bid Now</a>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="don-box">
+                    <img src="{{url_for('static', filename='img/don/wm.jpg')}}" alt="Washing Machine">
+                    <h3> Washing Machine</h3>
+                    <p>Recycling your old washing machines keeps waste out of landfills.</p>
+                    <p><strong>Price:</strong> <span id="price-washing-machine">Loading...</span></p>
+                    <a href="#contact" class="btn1">Bid Now</a>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="don-box">
+                    <img src="{{url_for('static', filename='img/don/fridge.jpg')}}" alt="Fridge">
+                    <h3>Single Door Fridge</h3>
+                    <p>Recycle single-door fridges for proper waste management.</p>
+                    <p><strong>Price:</strong> <span id="price-fridge">Loading...</span></p>
+                    <a href="#contact" class="btn1">Bid Now</a>
+                </div>
+            </div>
+            <!-- Small Appliances -->
+            <div class="col-lg-4">
+                <div class="don-box">
+                    <img src="{{url_for('static', filename='img/don/printer.jpg')}}" alt="Printer">
+                    <h3>Printer/Scanner</h3>
+                    <p>Recycle old printers and reduce electronic waste.</p>
+                    <p><strong>Price:</strong> <span id="price-printer">Loading...</span></p>
+                    <a href="#contact" class="btn1">Bid Now</a>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="don-box">
+                    <img src="{{url_for('static', filename='img/don/fan.jpg')}}" alt="Ceiling Fan">
+                    <h3>Ceiling Fan</h3>
+                    <p>Recycle old ceiling fans and contribute to eco-friendly practices.</p>
+                    <p><strong>Price:</strong> <span id="price-ceiling-fan">Loading...</span></p>
+                    <a href="#contact" class="btn1">Bid Now</a>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="don-box">
+                    <img src="{{url_for('static', filename='img/don/oven.jpg')}}" alt="Microwave">
+                    <h3>Microwave</h3>
+                    <p>Don’t let microwaves add to waste—recycle them instead.</p>
+                    <p><strong>Price:</strong> <span id="price-microwave">Loading...</span></p>
+                    <a href="#contact" class="btn1">Bid Now</a>
+                </div>
+            </div>
+            <!-- Mobiles & Gadgets -->
+            <div class="col-lg-4">
+                <div class="don-box">
+                    <img src="{{url_for('static', filename='img/don/lap.jpg')}}" alt="Laptop">
+                    <h3>Scrap Laptop</h3>
+                    <p>Turn your old laptops into valuable recycled resources.</p>
+                    <p><strong>Price:</strong> <span id="price-scrap-laptop">Loading...</span></p>
+                    <a href="#contact" class="btn1">Bid Now</a>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="don-box">
+                    <img src="{{url_for('static', filename='img/don/phone.jpg')}}" alt="Mobile Phones">
+                    <h3>Mobile Phones</h3>
+                    <p>Recycle your old mobile phones responsibly to reduce e-waste.</p>
+                    <p><strong>Price:</strong> <span id="price-mobile-phones">Loading...</span></p>
+                    <a href="#contact" class="btn1">Bid Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</main>
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="col-one">
+                    <h4>Scrap Collector</h4>
+                    <p>Address: Mumbai,Maharashtra 401501</p>
+                    <p>Contact No: <a href="tel:+9198659****59">+91 xxxxxxxxxx</a></p>
+                    <p>Email: <a href="mailto:foundation@code.com">domainname.com</a></p>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="col-two">
+                    <h4>Important Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#donation">Donations</a></li>
+                        <li><a href="#mission-id">Missions</a></li>
+                        <li><a href="#about">About us</a></li>
+                        <li><a href="#contact">Contact us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="col-one">
+                    <h4>Social Media</h4>
+                    <div class="social">
+                        <a href="#"><img src="{{url_for('static', filename='img/icons/facebook.png')}}"
+                                alt="facebook"></a>
+                        <a href="#"><img src="{{url_for('static', filename='img/icons/instagram.png')}}"
+                                alt="instagram"></a>
+                        <a href="#"><img src="{{url_for('static', filename='img/icons/youtube.png')}}"
+                                alt="youtube"></a>
+                        <a href="#"><img src="{{url_for('static', filename='img/icons/linkedin.png')}}"
+                                alt="linkedin"></a>
+                        <a href="#"><img src="{{url_for('static', filename='img/icons/gmail.png')}}"
+                                alt="gmail"></a>
+                    </div>
+                    <p>Copyright &copy; 2024 | All Rights Reserved</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="{{url_for('static', filename='js/script.js')}}"></script>
+</body>
+
+</html>

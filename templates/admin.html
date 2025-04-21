@@ -40,7 +40,7 @@
                     <div class="card-body">
                         <h5 class="card-title">{{ product.title }}</h5>
                         <p class="card-text">{{ product.description }}</p>
-                        <p class="card-text"><strong>Price:</strong> ${{ product.price }}</p>
+                        <p class="card-text"><strong>Price:</strong> ₹{{ product.price }}</p>
                     </div>
                     <div class="card-footer d-flex justify-content-between">
                         <a href="{{ url_for('update_scrap', scrap_id=product.id) }}" class="btn btn-warning btn-sm">Update</a>

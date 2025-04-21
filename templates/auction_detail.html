@@ -1,0 +1,76 @@
+{% include 'header.html' %}
+<main class="container">
+    <div class="row">
+        
+        <div class="col-md-6">
+            <img src="{{ url_for('static', filename=scrap.image_file) }}" alt="Auction Item" class="img-fluid rounded shadow">
+        </div>
+        <div class="col-md-6">
+            {% if auction_active %}
+    <p><strong>Time Left:</strong> <span id="countdown"></span></p>
+    <script>
+        const endTime = new Date("{{ scrap.end_time.isoformat() }}Z").getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = endTime - now;
+
+            if (distance < 0) {
+                document.getElementById("countdown").innerHTML = "Auction ended!";
+                location.reload();  // Refresh the page when time ends
+                return;
+            }
+
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("countdown").innerHTML =
+                `${hours}h ${minutes}m ${seconds}s`;
+        }
+
+        updateCountdown(); // initial call
+        setInterval(updateCountdown, 1000); // update every second
+    </script>
+{% endif %}
+
+            <h2>{{ scrap.title }}</h2>
+            <p>{{ scrap.description }}</p>
+            <p><strong>Current Bid:₹ {{ scrap.price }}</strong></p>
+
+            {% if scrap.status == 'sold' %}
+                <p class="text-danger">This item is sold.</p>
+            {% else %}
+            {% if auction_active %}
+            <form method="POST">
+                <input type="number" name="bidprice" min="{{ scrap.price + 1 }}" class="form-control" placeholder="Your bid" required>
+                <button type="submit" class="btn btn-success mt-2">Place Bid</button>
+            </form>
+        {% else %}
+            <p class="text-danger mt-2"><strong>Bidding time is over!</strong></p>
+            <p>Highest Bid: <strong>₹{{ bids[0].bid_amount if bids else scrap.price }}</strong></p>
+            {% if bids %}
+                <p>Winner: <strong>{{ bids[0].user.username }}</strong></p>
+            {% endif %}
+        {% endif %}
+        
+                
+            {% endif %}
+
+            <hr>
+            <h5>Recent Bids:</h5>
+            {% if bids %}
+                <ul class="list-group">
+                    {% for bid in bids %}
+                        <li class="list-group-item">
+                            ₹{{ bid.bid_amount }} by User ID: {{ bid.id }}
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No bids yet.</p>
+            {% endif %}
+            
+        </div>
+    </div>
+</main>

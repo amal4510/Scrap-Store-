@@ -1,30 +1,38 @@
 {% include 'header.html' %}
-<main class="container mt-4">
+<main class="container" >
     <div class="row">
+        <div class="col-md-12">
+            <h1>Live Auctions</h1>
+        </div>
         {% if products %}
         {% for product in products %}
+        
+        <!--<p>{{product.slug}}</p>-->
         <div class="col-md-4 mb-4">
             <div class="auction-card border shadow-sm rounded">
                 <img src="{{ url_for('static', filename=product.image_file) }}" alt="Auction Item" class="item-image img-fluid rounded-top">
                 <div class="auction-details p-3">
-                    <h2 class="h5">{{ product.title }}</h2>
+                   <a href="auction/{{product.slug}}"> <h2 class="h5">{{ product.title }}</h2></a>
                     <p class="description text-muted">{{ product.description }}</p>
-                    <p class="current-bid">Current Bid: <strong>${{ product.price }}</strong></p>
+                    <div class="row">
+                    <div class="col-md-5">
+                        <p class="current-bid">Current Bid: <strong>₹{{ product.price }}</strong></p>
+                    </div>
 
+                    <div class="col-md-6">
                     <!-- Display status -->
                     {% if product.status == 'sold' %}
                         <span style="color:red;" class="sold">Sold</span>
 
                     {% else %}
-                        <span style="color:yellow;" class="selling">For Sale</span>
-                        <form class="bid-form mt-3" action="{{ url_for('auction') }}" method="POST">
-                            <input type="hidden" name="product_id" value="{{ product.id }}">
-                            <input type="number" name="bidprice" placeholder="Enter your bid ($)" min={{product.price+2}} required class="form-control mb-2">
-                            <button type="submit" class="btn btn-primary btn-block">Place Bid</button>
-                        </form>
+                        <span style="color:lightgreen;" class="selling">For Sale</span>
+
+                            <a href="auction/{{product.slug}}"><button class="btn btn-primary btn-block">Place Bid</button></a>
+                      
                     {% endif %}
 
-                    
+                    </div>
+                </div>
                 </div>
             </div>
         </div>

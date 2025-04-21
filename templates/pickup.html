@@ -22,8 +22,8 @@
 <script>
     function schedulePickup() { 
         const phone = document.getElementById('phone').value; 
-        if (phone.match(/^\d{10}$/)){  
-            alert(`Thank you! Your pickup has been scheduled. We’ll contact you at +91 ${phone}.`);
+        if (phone.match(/^\d{10}₹/)){  
+            alert(`Thank you! Your pickup has been scheduled. We’ll contact you at +91 ₹{phone}.`);
             fetch('/pickup', {
                 method: 'POST', headers: { 
                     'Content-Type': 'application/json'

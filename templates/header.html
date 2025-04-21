@@ -17,7 +17,6 @@
     <style>
         /* Auction Card Styling */
 .auction-card {
-    margin-top:200px;
     background-color: #ffffff;
     transition: transform 0.2s ease-in-out;
 }
@@ -74,16 +73,13 @@
                             <a class="nav-link" href="{{url_for('index')}}#home">Home <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{url_for('index')}}#donation">Donations</a>
+                            <a class="nav-link" href="{{url_for('donation')}}">Donations</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{url_for('index')}}#mission-id">Missions</a>
+                            <a class="nav-link" href="{{url_for('about')}}">About</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{url_for('index')}}#about">About</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{url_for('index')}}#contact">Contact</a>
+                            <a class="nav-link" href="{{url_for('contact')}}">Contact</a>
                         </li> 
                         {% if session.User %}
                         <li class="nav-item">
