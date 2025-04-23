@@ -7,7 +7,7 @@
 <body>
 <div class="container mt-5">
     <h1 class="text-center">Update Product</h1>
-    <form method="post" action="{{ url_for('update_scrap', scrap_id=scrap.id) }}">
+    <form method="post" action="{{ url_for('admin.update_scrap', scrap_id=scrap.id) }}">
         <div class="mb-3">
             <label for="price" class="form-label">New Price</label>
             <input type="number" step="0.01" class="form-control" id="price" name="price" value="{{ scrap.price }}" required>

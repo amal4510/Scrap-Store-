@@ -22,6 +22,8 @@
     </div>
 </section>
 
+
+
 <section class="don-sec mt-5" id="donation">
     <div class="container">
         <div class="heading">
@@ -39,7 +41,7 @@
             {% if product.status == 'sold' %}
             <span style="color:red;" class="sold">Sold</span>
         {% else %}
-            <span style="color:yellow;" class="selling">For Sale</span>
+            <span style="color:lightgreen;" class="selling">For Sale</span>
         {% endif %}
                     
                     <p><strong>Price:</strong> <span id="price-normal-recyclables">₹{{product.price}}</span></p>

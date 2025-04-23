@@ -74,3 +74,13 @@ class Bid(db.Model):
     timestamp = db.Column(db.DateTime, nullable=False, default=db.func.current_timestamp())
 
     # Relationships to User and Scrap are already defined via foreign keys
+    
+    
+class ContactSubmission(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(120), nullable=False)
+    mobile = db.Column(db.String(20), nullable=False)
+    wastage_type = db.Column(db.String(100), nullable=False)
+    address = db.Column(db.String(255), nullable=False)
+    message = db.Column(db.Text, nullable=False)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)

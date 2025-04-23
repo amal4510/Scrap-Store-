@@ -1,102 +1,87 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Submit Scrap Information</title>
-    <!-- Bootstrap 5 CSS -->
-
-    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
-    <link rel="stylesheet" href="{{url_for('static', filename='css/responsive.css')}}">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
-
-</head>
-<body style="background-color: #6a994e;">
-
-    {% include 'header.html' %}
-
-    <div class="container add-container">
-        <h2 class="mb-4">Submit Your Scrap Information</h2>
 
 
-        <!-- Flash Messages -->
-        {% with messages = get_flashed_messages(with_categories=true) %}
-            {% if messages %}
-                <div class="flash-messages">
-                    {% for category, message in messages %}
-                        <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
-                            {{ message }}
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        </div>
-                    {% endfor %}
-                </div>
-            {% endif %}
-        {% endwith %}
+  {% include 'header.html' %}
+<main>
+  <div class="container py-5">
+    <div class="bg-light p-4 rounded shadow">
+      <h2 class="mb-4 text-center text-success">Submit Your Scrap Information</h2>
 
-        <!-- Scrap Form -->
-        <form action="{{ url_for('add_scrap') }}" method="POST" enctype="multipart/form-data">
-            <!-- Scrap Title -->
-            <div class="mb-3">
-                <label for="title" class="form-label">Scrap Title</label>
-                <input type="text" class="form-control" id="title" name="title" placeholder="Enter the scrap title" required>
-            </div>
+      <!-- Flash Messages -->
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          <div class="mb-3">
+            {% for category, message in messages %}
+              <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+            {% endfor %}
+          </div>
+        {% endif %}
+      {% endwith %}
 
-            <!-- Scrap Description -->
-            <div class="mb-3">
-                <label for="description" class="form-label">Description</label>
-                <textarea class="form-control" id="description" name="description" rows="4" placeholder="Describe the scrap" required></textarea>
-            </div>
+      <!-- Scrap Submission Form -->
+      <form action="{{ url_for('add_scrap') }}" method="POST" enctype="multipart/form-data">
+        <div class="row">
+          <!-- Title -->
+          <div class="mb-3 col-md-6">
+            <label for="title" class="form-label">Scrap Title</label>
+            <input type="text" class="form-control" id="title" name="title" placeholder="Enter the scrap title" required>
+          </div>
 
-              <!-- Scrap Price -->
-              <div class="mb-3">
-                <label for="price" class="form-label">Price (USD)</label>
-                <input type="number" step="0.01" class="form-control" id="price" name="price" placeholder="Enter the scrap price" required>
-            </div>
-<!-- Auction Duration -->
-<div class="mb-3">
-    <label for="duration" class="form-label">Auction Duration (in minutes)</label>
-    <input type="number" class="form-control" id="duration" name="duration" placeholder="Enter duration (e.g., 60 for 1 hour)" required min="1">
-</div>
+          <!-- Price -->
+          <div class="mb-3 col-md-6">
+            <label for="price" class="form-label">Price (₹)</label>
+            <input type="number" step="0.01" class="form-control" id="price" name="price" placeholder="Enter the scrap price" required>
+          </div>
+        </div>
 
-            <!-- Scrap Image Upload -->
-            <div class="mb-3">
-                <label for="file-input" class="form-label">Image Upload</label>
-                <input type="file" class="form-control" id="file-input" name="image_file" accept="image/*" required>
-                <div id="preview-container"></div>
-            </div>
+        <!-- Description -->
+        <div class="mb-3">
+          <label for="description" class="form-label">Description</label>
+          <textarea class="form-control" id="description" name="description" rows="4" placeholder="Describe the scrap" required></textarea>
+        </div>
 
-            <!-- Submit Button -->
-            <button type="submit" class="btn1">Submit Scrap</button>
-        </form>
+        <!-- Duration -->
+        <div class="mb-3">
+          <label for="duration" class="form-label">Auction Duration (in minutes)</label>
+          <input type="number" class="form-control" id="duration" name="duration" placeholder="e.g., 60 for 1 hour" min="1" required>
+        </div>
+
+        <!-- Image Upload -->
+        <div class="mb-3">
+          <label for="file-input" class="form-label">Upload Image</label>
+          <input type="file" class="form-control" id="file-input" name="image_file" accept="image/*" required>
+          <div id="preview-container" class="mt-3"></div>
+        </div>
+
+        <!-- Submit -->
+        <div class="text-center">
+          <button type="submit" class="btn btn-success px-4 py-2">Submit Scrap</button>
+        </div>
+      </form>
     </div>
+  </div>
+</main>
+  <!-- Preview Script -->
+  <script>
+    document.getElementById('file-input').addEventListener('change', function(event) {
+      const previewContainer = document.getElementById('preview-container');
+      previewContainer.innerHTML = '';
 
-          
-
-    <!-- Bootstrap 5 JS and Popper.js -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        document.getElementById('file-input').addEventListener('change', function(event) {
-            const previewContainer = document.getElementById('preview-container');
-            previewContainer.innerHTML = ''; // Clear any previous previews
-
-            const files = event.target.files;
-            if (files.length > 0) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    const img = document.createElement('img');
-                    img.src = e.target.result;
-                    previewContainer.appendChild(img);
-                }
-                reader.readAsDataURL(files[0]); // Read the first file
-            }
-        });
-    </script>
+      const files = event.target.files;
+      if (files.length > 0) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const img = document.createElement('img');
+          img.src = e.target.result;
+          img.className = "img-thumbnail";
+          img.style.maxWidth = "200px";
+          previewContainer.appendChild(img);
+        }
+        reader.readAsDataURL(files[0]);
+      }
+    });
+  </script>
 </body>
 </html>

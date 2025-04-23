@@ -35,7 +35,7 @@
                             </h4>
                             <br>
                             <div class="buttons">
-                                <a href="{{url_for('add_scrap')}}" class="btn1">Sell Scraps</a>
+                                <a href="{{url_for('add_scrap')}}" class="btn1">Donate Now</a>
                             </div>
                         </div>
                     </div>
@@ -66,11 +66,11 @@
                 {% if product.status == 'sold' %}
                 <span style="color:red;" class="sold">Sold</span>
             {% else %}
-                <span style="color:yellow;" class="selling">For Sale</span>
+                <span style="color:lightgreen;" class="selling">For Sale</span>
             {% endif %}
                         
                         <p><strong>Price:</strong> <span id="price-normal-recyclables">₹{{product.price}}</span></p>
-                        <a href="{{url_for('auction')}}" class="btn1">Bid Now</a>
+                        <a href='auction/{{product.slug}}' class="btn1">Bid Now</a>
                     </div>
                 </div>
                 {% endfor %}
@@ -284,7 +284,7 @@
                             <a href="#"><img src="{{url_for('static', filename='img/icons/gmail.png')}}"
                                     alt="gmail"></a>
                         </div>
-                        <p>Copyright &copy; 2024 | All Rights Reserved</p>
+                        <p>Copyright &copy; 2025 | All Rights Reserved</p>
                     </div>
                 </div>
             </div>
