@@ -95,11 +95,15 @@ def register_routes(app):
             return redirect(url_for('login'))
 
         if request.method == 'POST':
+            if not request.form.get('duration'):
+                duration_minutes=120
+            else:
+                duration_minutes = int(request.form.get('duration'))
             title = request.form.get('title')
             description = request.form.get('description')
-            price = request.form.get('price')
-            duration_minutes = int(request.form.get('duration'))  # e.g., 60 for 1 hour
-
+            price = request.form.get('price')  # e.g., 60 for 1 hour
+            
+                
             if 'image_file' not in request.files or not request.files['image_file'].filename:
                 flash('No file selected', 'danger')
                 return redirect(url_for('add_scrap'))
@@ -225,32 +229,8 @@ def register_routes(app):
 
         return render_template('auction_detail.html', scrap=scrap, bids=bids, auction_active=auction_active, remaining_time=remaining_time)
 
-    
-    # @app.route('/auction/<slug>', methods=['GET', 'POST'])
-    # def auction_detail(slug):
-    #     scrap = Scrap.query.filter_by(slug=slug).first_or_404()
-    #     bids = Bid.query.filter_by(scrap_id=scrap.id).order_by(Bid.bid_amount.desc()).all()
-        
-    #     if request.method == 'POST':
-    #         bid_amount = request.form.get('bidprice')
 
-    #         if 'User' not in session:
-    #             flash('Please log in to place a bid', 'danger')
-    #             return redirect(url_for('login'))
-
-    #         user = User.query.filter_by(username=session['User']).first()
-
-    #         if float(bid_amount) <= scrap.price:
-    #             flash('Bid must be higher than current price.', 'warning')
-    #             return redirect(request.url)
-
-    #         new_bid = Bid(bid_amount=float(bid_amount), user_id=user.id, scrap_id=scrap.id)
-    #         scrap.price = float(bid_amount)  # Update current price
-    #         db.session.add(new_bid)
-    #         db.session.commit()
-
-    #         flash('Bid placed successfully!', 'success')
-    #         return redirect(request.url)
-
-    #     return render_template('auction_detail.html', scrap=scrap, bids=bids)
-
+    @app.route('/add_donate', methods=['GET'])
+    def add_donate():
+        return render_template('add_donate.html')
+   
